@@ -1,0 +1,10 @@
+package quan_li_ban_hang;
+
+public class Phieu {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

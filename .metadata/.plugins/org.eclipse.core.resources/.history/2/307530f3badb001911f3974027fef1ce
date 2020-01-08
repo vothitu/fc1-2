@@ -1,0 +1,53 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Sort {
+	private int[] a;
+	private int n;
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Enter n : ");
+		this.setN(kb.nextInt());
+	}
+	public void radixSort() {
+		Queue[] q = new Queue[10];
+		for (int i = 0; i < q.length; i++) {
+			q[i] = new LinkedList<Integer>();
+		}
+		int length = 0;
+		for (int i = 0; i < a.length; i++) {
+			int ni = (int) (Math.log10(a[i]) + 1);
+			if (ni > length) {
+				length = ni;
+			}
+		}
+		int m = 10;
+		int ni = 1;
+		for (int i = 0; i < length; i++) {
+			for (int y = 0; y < a.length; y++) {
+				int nbr = (a[y] % m) / ni;
+				q[nbr].add(a[y]);
+			}
+		}
+		int x = 0;
+		for (int j = 0; j < q.length; j++) {
+			while (!q[j].isEmpty()) {
+				a[x] = (int) q[j].remove();
+				x++;
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Sort s= new Sort();
+		s.input();
+		s.radixSort();
+
+	}
+
+}

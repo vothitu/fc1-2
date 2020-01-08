@@ -1,0 +1,54 @@
+package stack;
+
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Ex01 
+{
+	private int n;
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb= new Scanner(System.in);
+		System.out.print("nhap n: ");
+		this.setN(kb.nextInt());
+	}
+	public void doiHe(int k) {
+		Stack<Integer> s= new Stack<Integer>();
+		while (n>0) {
+			int du= n%k;
+			s.push(du);
+			n=n/k;
+		}
+		while(s.empty()==false)
+			if(s.peek()<10) { 
+				System.out.print(s.pop());
+			}
+			else {
+				if(s.pop()==10) {
+				System.out.print("A");
+				}
+				else {
+					if(s.pop()==11) {
+						System.out.print("B");
+					}
+					else {
+						if(s.pop()==12) {
+							System.out.print("C");
+						}
+						else {
+							System.out.print("D");
+						}
+					}
+				}
+			}
+	}
+		
+	public static void main(String[] args) {
+		Ex01 a= new Ex01();
+		a.input();
+		a.doiHe(16);
+	}
+
+}

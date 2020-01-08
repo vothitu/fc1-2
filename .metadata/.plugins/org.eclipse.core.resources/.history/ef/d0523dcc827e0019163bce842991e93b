@@ -1,0 +1,36 @@
+package triangle;
+
+import java.util.Scanner;
+
+public class Student 
+{
+		 int masv;  
+		 String ten;  
+		 String tinh;    
+		 public void input() {
+			 Scanner kb= new Scanner(System.in);
+			 System.out.println("masv");
+			 kb.nextInt();
+			 System.out.println("ten");
+			 kb.nextLine();
+			 kb.nextLine();
+			 System.out.println("tinh");
+			 kb.hasNextLine();
+		 }
+		 public void output() {
+			 System.out.println(this.masv);
+			 System.out.println(this.ten);
+			 System.out.println(this.tinh);
+			 
+		 }
+		   
+		 public String toString(){//ghi de phuong thuc toString()  
+		  return masv+" "+ten+" "+tinh;  
+		 }  
+		 public static void main(String args[]){  
+		   Student a= new Student();
+		   a.input();
+		   a.output();
+		  
+		 }  
+		}   

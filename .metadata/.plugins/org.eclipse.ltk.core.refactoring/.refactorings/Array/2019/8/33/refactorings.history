@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Array/src/array_of_fraction/ArrayOfInteger.java&apos; to &apos;ArrayOfFraction.java&apos;" description="Rename resource &apos;ArrayOfInteger.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/array_of_fraction/ArrayOfInteger.java" name="ArrayOfFraction.java" stamp="1565744658919" updateReferences="true"/>
+</session>

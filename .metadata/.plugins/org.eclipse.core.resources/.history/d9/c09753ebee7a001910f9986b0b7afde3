@@ -1,0 +1,163 @@
+package doan;
+
+import java.awt.BorderLayout;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Scanner;
+
+import javax.swing.*;
+
+public class Management extends JFrame implements ActionListener, KeyListener, MouseListener {
+
+	private JLabel lSub, lCode, lName, lM1, lM2, lM3;
+	private JTextField txtCode, txtName, txtM1, txtM2, txtM3;
+	private JButton bFind, bBack, bAdd, bDel, bSort, bSave;
+	private JTable table;
+	private JPanel p0, p, p1, p2, p3, p4, p234, p5;
+	private JScrollPane scroll;
+	private int n, nb = 0, i = 0;
+	private Object objects[][];
+	private final String[] titles = new String[] { "ID", "Name Product", "ID Supplier", "ID Type", "Quanlity" };
+	private Student a[] = new Student[30];
+	private Student b[] = new Student[30];
+
+	public Management() throws FileNotFoundException {
+		setTitle("Mini Mark Management");
+		this.setLayout(new GridLayout(6, 1));
+		this.setSize(500, 600);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		//
+		lSub = new JLabel("PROGRAM FOR MINI MARK MANAGEMENT");
+		p0 = new JPanel(new FlowLayout());
+		p0.add(lSub);
+		//
+		lCode = new JLabel("Product ID");
+		txtCode = new JTextField(10);
+		p = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p.add(lCode);
+		p.add(txtCode);
+		//
+		lName = new JLabel("Product Name");
+		txtName = new JTextField(20);
+		bFind = new JButton("     Find");
+		bBack = new JButton("     Back");
+		p1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		p1.add(lName);
+		p1.add(txtName);
+		p1.add(bFind);
+		p1.add(bBack);
+		//
+		lM1 = new JLabel("Supplier");
+		txtM1 = new JTextField(10);
+		p2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p2.add(lM1);
+		p2.add(txtM1);
+		//
+		lM2 = new JLabel("Type");
+		txtM2 = new JTextField(10);
+		p3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p3.add(lM2);
+		p3.add(txtM2);
+		//
+		lM3 = new JLabel("Quanlity");
+		txtM3 = new JTextField(10);
+		p4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		p4.add(lM3);
+		p4.add(txtM3);
+		//
+		p234 = new JPanel(new GridLayout(3, 1));
+		p234.add(p2);
+		p234.add(p3);
+		p234.add(p4);
+		//
+		bAdd = new JButton("Add");
+		bDel = new JButton("Delete");
+		bSort = new JButton("Sort");
+		bSave = new JButton("Save");
+		p5 = new JPanel(new FlowLayout());
+		p5.add(bAdd);
+		p5.add(bDel);
+		p5.add(bSort);
+		p5.add(bSave);
+
+		//
+		readFile();
+		objects = arrayToObject();
+		table = new JTable(objects, titles);
+		scroll = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		this.add(p0);
+		this.add(p);
+		this.add(p1);
+		this.add(p234);
+		this.add(p5);
+		this.add(scroll, BorderLayout.CENTER);
+		this.validate();
+
+		bFind.addMouseListener(this);
+		bFind.addKeyListener(this);
+		txtCode.addKeyListener(this);
+		txtCode.addMouseListener(this);
+		txtName.addKeyListener(this);
+		txtName.addMouseListener(this);
+		txtM1.addMouseListener(this);
+		txtM1.addKeyListener(this);
+		txtM2.addMouseListener(this);
+		txtM2.addKeyListener(this);
+		txtM3.addMouseListener(this);
+		txtM3.addKeyListener(this);
+		bAdd.addMouseListener(this);
+		bAdd.addKeyListener(this);
+		bDel.addMouseListener(this);
+		bDel.addKeyListener(this);
+		bSort.addMouseListener(this);
+		bSort.addKeyListener(this);
+		bSave.addMouseListener(this);
+		bSave.addKeyListener(this);
+		bBack.addMouseListener(this);
+		bBack.addKeyListener(this);
+		table.addMouseListener(this);
+		scroll.addMouseListener(this);
+
+		txtCode.requestFocus();
+	}
+
+	public static void main(String[] agrs) throws FileNotFoundException {
+		Management m = new Management();
+
+	}
+
+	public void readFile() throws FileNotFoundException {
+		File f = new File("src/doan/product");
+		Scanner kb = new Scanner(f);
+		int i = 0;
+		while (kb.hasNext()) {
+			a[i] = new Student();
+			a[i].setCode(kb.next());
+			String s = "";
+			while (!kb.hasNextDouble())
+				s = s + " " + kb.next();
+			a[i].setName(s.trim());
+			a[i].setM1(kb.nextDouble());
+			a[i].setM2(kb.nextDouble());
+			a[i].setM3(kb.nextDouble());
+			i++;
+		}
+		n = i;
+		kb.close();
+
+	}
+}

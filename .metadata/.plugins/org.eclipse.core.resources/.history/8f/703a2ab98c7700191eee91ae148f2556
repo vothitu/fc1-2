@@ -1,0 +1,73 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class QLTienM extends QLhanghoa{
+
+	private double rate, soluongM, dongiaM;
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public double getSoluongM() {
+		return soluongM;
+	}
+
+	public void setSoluongM(double soluongM) {
+		this.soluongM = soluongM;
+	}
+
+	public double getDongiaM() {
+		return dongiaM;
+	}
+
+	public void setDongiaM(double dongiaM) {
+		this.dongiaM = dongiaM;
+	}
+	public QLTienM() {
+		super();
+	}
+	public QLTienM(String mahang,String tenhang,double rate,double soluongM,double dongiaM) {
+		super(mahang,tenhang);
+		setRate(rate);
+		setSoluongM(soluongM);
+		setDongiaM(dongiaM);
+	}
+	@Override
+	public void input() {
+		super.input();
+		Scanner hieu=new Scanner(System.in);
+		System.out.println("enter rate :");
+		setRate(hieu.nextDouble());
+		System.out.println("enter so luong:");
+		setSoluongM(hieu.nextDouble());
+		System.out.println("enter don gia : ");
+		setDongiaM(hieu.nextDouble());
+		
+	}
+	@Override
+	public void output() {
+		super.output();
+		System.out.println("rate : "+ getRate());
+		System.out.println("so luong :" + getSoluongM());
+		System.out.println("don gia : "+ getDongiaM());
+		System.out.println("tien mua la : "+slove());
+	}
+	@Override
+	public double slove() {
+		double t=0;
+		t= (getDongiaM() * getSoluongM())-(getRate() * (getSoluongM() * getDongiaM()));
+		return t;
+	}
+	public static void main(String[] args) {
+		QLTienM h=new QLTienM();
+		h.input();
+		h.output();
+	}
+
+}

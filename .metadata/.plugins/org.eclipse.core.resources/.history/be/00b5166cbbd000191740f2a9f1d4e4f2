@@ -1,0 +1,45 @@
+package stack;
+
+import java.util.EmptyStackException;
+import java.util.Stack;
+
+public class ParenChecker {
+	private static final String OPEN="(((";
+	private static final String CLOSE=")))";
+	
+	private static boolean isOpen(char ch) {
+		return (OPEN.indexOf(ch)>-1);
+	}
+	private static boolean isClose(char ch) {
+		return (CLOSE.indexOf(ch)>-1);
+	}
+	public static boolean isBalanced(String expression) {
+		Stack<Character> s=new Stack<Character>();
+		boolean balanced;
+		try {
+			balanced = true;
+			int index =0;
+			while(index<expression.length()&& balanced) {
+				char nextCh = expression.charAt(index);
+				if(isOpen(nextCh)) {
+					s.push(nextCh);
+					System.out.println(s);
+				}
+				else
+					if(isClose(nextCh)) {
+						char topCh= s.pop();
+						System.out.println(s);
+		if(OPEN.indexOf(topCh)!=CLOSE.indexOf(nextCh)) balanced=false;
+					}
+				index++;
+			}
+		}
+		catch(EmptyStackException c) {
+			balanced = false;
+		}
+		return balanced && s.empty();
+	}
+	public static void main(String[] args) {
+		ParenChecker a = new ParenChecker();
+	}
+}

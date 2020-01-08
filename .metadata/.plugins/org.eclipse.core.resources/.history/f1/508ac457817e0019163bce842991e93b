@@ -1,0 +1,112 @@
+package person;
+
+import java.util.Scanner;
+
+public class Person {
+	private String fullname;
+	private boolean gender;
+	private String phoneNumber;
+	private Address add = new Address();
+	private Date bad = new Date();
+	
+	public Address getAddress() {
+		return add;
+	}
+	public void setAddress(Address add){
+		this.add=add;
+	}
+	public Date getDate() {
+		return bad;
+	}
+	public void setDate(Date bad) {
+		this.bad=bad;
+	}
+	public String getFullname() {
+		return fullname;
+	}
+	public boolean getGender() {
+		return gender;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setFullname(String fullname) {
+		this.fullname=fullname;
+	}
+	public void setGender(boolean gender) {
+		this.gender=gender;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber=phoneNumber;
+	}
+	public Person() {
+		this.fullname ="";
+		this.phoneNumber = "";
+		
+	}
+	public Person(String fullname, boolean gender, String phoneNumber, Address add, Date bad) {
+		setFullname(fullname);
+		setGender(gender);
+		setPhoneNumber(phoneNumber);
+		setAddress(add);
+		setDate(bad);
+		
+	}
+	public void input () {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter fullname : ");
+		this.setFullname(in.nextLine());
+		
+		System.out.println("Enter gender : ");
+		this.setGender(in.nextBoolean());
+		System.out.println("Enter phoneNumber : ");
+		this.setPhoneNumber(in.nextLine());
+		this.setPhoneNumber(in.nextLine());
+		System.out.println("Enter address: ");
+		add.input();
+		System.out.println("Enter date: ");
+		bad.input();
+	}
+	public void output() {
+		System.out.println(this.fullname);
+		System.out.println(this.gender);
+		System.out.println(this.phoneNumber);
+		System.out.println(this.add);
+		add.output();
+		System.out.println(this.bad);
+		bad.output();
+	}
+	public static void main(String[] args) {
+		//Person p1 = new Person();
+		//p1.output();
+		
+		Address add = new Address();
+		add.input();
+		Date bad = new Date();
+		bad.input();
+		Person p2 = new Person("Tien", true, "349854",add,bad);
+		p2.output();
+		
+		
+		Person p3 = new Person();
+		p3.input();
+		p3.output();
+		
+		Date a1 = new Date();
+		a1.input();
+		a1.output();
+		
+		
+		/*Address add1 = new Address ("04","nguyen duc trung","thanh khe","Da Nang");
+		Date aa = new Date(20,12,1999);
+		Person p4 = new Person ("hien", false,"343485794",add1,aa);
+		p4.output();
+		
+		Person p5 = new Person("thuy", false,"039723",
+					new Address("148","nguyen luong bang","cam le","DN"),
+					new Date(13,11,1999)  );
+		p5.output();*/
+
+	}
+
+}

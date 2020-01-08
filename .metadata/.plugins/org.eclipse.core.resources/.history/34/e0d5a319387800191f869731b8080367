@@ -1,0 +1,102 @@
+package quan_li_ban_hang;
+ 
+import java.util.Scanner;
+public abstract class QLhanghoa {
+	private String maSP,tenSP,nhanVien,nhaCC;
+	private QLDate ngayX,ngayN,hanDung;
+	private int soLuong;
+	private double donGia;
+	abstract double solve();
+	private QLDate date=new QLDate();
+	public String getMaSP() {
+		return maSP;
+	}
+	public void setMaSP(String maSp) {
+		this.maSP = maSp;
+	}
+	public String getNhanVien() {
+		return nhanVien;
+	}
+	public void setNhanVien(String nhanVien) {
+		this.nhanVien = nhanVien;
+	}
+	public String getNhaCC() {
+		return nhaCC;
+	}
+	public void setNhaCC(String nhaCC) {
+		this.nhaCC = nhaCC;
+	}
+	public QLDate getNgayX() {
+		return ngayX;
+	}
+	public void setNgayX(QLDate ngayX) {
+		this.ngayX = ngayX;
+	}
+	public QLDate getNgayN() {
+		return ngayN;
+	}
+	public void setNgayN(QLDate ngayN) {
+		this.ngayN = ngayN;
+	}
+	public QLDate getHanDung() {
+		return hanDung;
+	}
+	public void setHanDung(QLDate hanDung) {
+		this.hanDung = hanDung;
+	}
+	public int getSoLuong() {
+		return soLuong;
+	}
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+	public double getDonGia() {
+		return donGia;
+	}
+	public void setDonGia(double donGia) {
+		this.donGia = donGia;
+	}
+	public String getTenSP() {
+		return tenSP;
+	}
+	public void setTenSP(String tenSP) {
+		this.tenSP = tenSP;
+	}
+	public QLDate getDate() {
+		return date;
+	}
+	public void setDate(QLDate date) {
+		this.date = date;
+	}
+
+	public QLhanghoa() {
+		this.maSP="";
+		this.tenSP="";
+	}
+	public QLhanghoa(String tenhang,String mahang) {
+		setTenSP(tenSP);
+		setMaSP(maSP);
+	}
+	public void input() {
+		Scanner t=new Scanner(System.in);
+		System.out.println("nhap ma hang : ");
+		setMaSP(t.nextLine());
+		System.out.println("nhap ten hang : ");
+		setTenSP(t.nextLine());
+		
+		date.input();
+	}
+	public void output() {
+		System.out.println( "ma hang : "+ getMaSP() + "\nten hang : " + getTenSP()  );
+		date.output();
+	}
+	
+	public abstract double slove() ;
+	public static void main(String[] args) {
+		
+		
+				}
+			
+		
+	}
+

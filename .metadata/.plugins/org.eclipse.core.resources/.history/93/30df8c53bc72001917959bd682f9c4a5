@@ -1,0 +1,26 @@
+package option_pane;
+
+import javax.swing.JOptionPane;
+
+public class JoptionPane_Example {
+
+	public static void main(String[] args) {
+		/*
+		JOptionPane.showMessageDialog(null, "Hello everyone");
+		
+		int a=JOptionPane.showConfirmDialog(null, "Do you love me?");
+		JOptionPane.showMessageDialog(null, a);
+		if(a==JOptionPane.YES_OPTION)
+			JOptionPane.showMessageDialog(null, "I am so happy");
+		String name = JOptionPane.showInputDialog(null,"What is your name?");
+		JOptionPane.showMessageDialog(null, "My name is "+ name);
+		*/
+		String a = JOptionPane.showInputDialog("Enter a: ");
+		String b = JOptionPane.showInputDialog("Enter b: ");
+		JOptionPane.showMessageDialog(null, (Math.a+ Math.b));
+		
+		
+
+	}
+
+}

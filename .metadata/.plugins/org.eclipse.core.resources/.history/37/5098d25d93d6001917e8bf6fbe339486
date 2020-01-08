@@ -1,0 +1,57 @@
+package stack;
+
+import java.util.Scanner;
+import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+
+
+public class Ex01 
+{
+	private int n;
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb= new Scanner(System.in);
+		System.out.print("nhap n: ");
+		this.setN(kb.nextInt());
+	}
+	public void doiHe(int k) {
+		Stack<Integer> s= new Stack<Integer>();
+		while (n>0) {
+			int du= n%k;
+			s.push(du);
+			n=n/k;
+		}
+		while(s.empty()==false)
+			if(s.peek()<10) { 
+				System.out.print(s.pop());
+			}
+			else {
+				System.out.print((char)(s.pop()+55));
+			}
+	}
+	public boolean doiXung() {
+		Stack<Integer> s= new Stack<Integer>();
+		Queue<Integer> q=new LinkedList<Integer>();
+		while (n>0) {
+			int du= n%10;
+			s.push(du);
+			q.add(du);
+			n=n/10;
+		}
+		while(s.empty()==false && q.isEmpty()==false) 
+		if(s.pop()!=q.remove()) 
+				return false; 
+			return true;
+	}
+	public static void main(String[] args) {
+		Ex01 a= new Ex01();
+		a.input();
+		a.doiHe(16);
+		System.out.println();
+		System.out.println(a.doiXung());
+	}
+
+}

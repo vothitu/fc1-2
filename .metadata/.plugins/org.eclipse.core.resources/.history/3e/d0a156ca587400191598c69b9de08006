@@ -1,0 +1,74 @@
+package sum;
+
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class SumGui extends JFrame{
+	private JLabel lbA,lbB,lbResult;
+	private JTextField txtA,txtB,txtResult;
+	private JButton btnSum,btnReset,btnExit;
+	private JPanel pA,pB,pResult,pBtn;
+	
+	public SumGui() {
+		// 1.thiet lap cho Frame
+		super("Sum of two integer");
+		super.setSize(300,200);
+		super.setLocationRelativeTo(null);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setVisible(true);
+		super.setLayout(new GridLayout(4,1));
+	
+		
+		//2.tao cac panels components
+		pA = new JPanel();
+		//pA.setLayout(new FlowLayout()); //default layout cua JPanel la FlowLayout
+		lbA= new JLabel("Enter a");
+		txtA= new JTextField(10);
+		pA.add(lbA);
+		pA.add(txtA);
+		
+		pB = new JPanel();
+		lbB= new JLabel("Enter b");
+		txtB= new JTextField(10);
+		pB.add(lbB);
+		pB.add(txtB);
+		
+		pResult = new JPanel();
+		lbResult= new JLabel("Enter result");
+		txtResult= new JTextField(10);
+		pResult.add(lbResult);
+		pResult.add(txtResult);
+		
+		pBtn= new JPanel();
+		btnSum= new JButton("Sum");
+		btnReset= new JButton("Reset");
+		btnExit= new JButton("Exit");
+		pBtn.add(btnSum);
+		pBtn.add(btnReset);
+		pBtn.add(btnExit);
+		
+		//3.them cac components vao Frame
+		super.add(pA);
+		super.add(pB);
+		super.add(pResult);
+		super.add(pBtn);
+		
+		
+		
+		
+
+
+	}
+	
+
+	public static void main(String[] args) {
+		SumGui tu = new SumGui();
+	}
+
+}

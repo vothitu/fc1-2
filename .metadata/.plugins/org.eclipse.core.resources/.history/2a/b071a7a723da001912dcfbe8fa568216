@@ -1,0 +1,89 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class RadixSort {
+	
+
+	/**
+	 * Array with numbers to be sorted.
+	 */
+	public RadixSort() {
+		int[] unsorted1 = { 9, 179, 139, 38, 10, 5, 36 };
+		int[] unsorted2 = { 667342, 1745359, 556139, 343538, 5510, 45, 5536 };
+		radixSort(unsorted1);
+	}
+
+	/**
+	 * Performs radix sort, a kind of bucket sort. From right to left, take the
+	 * least significant number and put them in their corresponding bucket. Then
+	 * take them out, and that value is now sorted. Then do it again for all
+	 * valules, ex first "ones", then "tens" and so on.
+	 * 
+	 * @param unsorted
+	 */
+	public void radixSort(int[] unsorted) {
+		// Create a box with 10 buckets.
+		Queue[] box = new Queue[10];
+		for (int i = 0; i < box.length; i++) {
+			box[i] = new LinkedList<Integer>();
+		}
+
+		System.out.print("Unsorted list:   ");
+		printArray(unsorted);
+		// Find the longest number in the unsorted array.
+		int length = 0;
+		for (int i = 0; i < unsorted.length; i++) {
+			int n = (int) (Math.log10(unsorted[i]) + 1);
+			if (n > length) {
+				length = n;
+			}
+		}
+
+		int m = 10; // The number to use modulo on
+		int n = 1; // The number for rounding division.
+		// Repeats as long as the highest number in the array.
+		for (int i = 0; i < length; i++) {
+
+			// Perform calculation and put element in correct bucket.
+			for (int y = 0; y < unsorted.length; y++) {
+				int nbr = (unsorted[y] % m) / n;
+				box[nbr].add(unsorted[y]);
+			}
+
+			// Now remove the numbers in order and put them in a new array.
+			int x = 0;
+			for (int j = 0; j < box.length; j++) {
+				while (!box[j].isEmpty()) {
+					unsorted[x] = (int) box[j].remove();
+					x++;
+				}
+			}
+			System.out.print("Partly Sorted " + n + "'s: (");
+			printArray(unsorted);
+			m *= 10;
+			n *= 10;
+		}
+		System.out.print("Sorting complete: ");
+		printArray(unsorted);
+	}
+
+	/**
+	 * Prints the given arrays elements.
+	 * 
+	 * @param arr
+	 */
+	private void printArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + ", ");
+		}
+		
+		
+		System.out.println(")");
+	}
+	public static void main(String[] args) {
+		new RadixSort();
+	}
+}

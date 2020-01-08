@@ -1,0 +1,34 @@
+package linear_square_equation;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Equation extends JFrame{
+	private JLabel lbA,lbB,lC,lbResult;
+	private JTextField txtA,txtB,txtC,txtResult;
+	private JButton btnSum,btnReset,btnExit;
+	private JPanel pA,pB,pResult,pBtn;
+	
+	public  Equation() {
+		//1. thiet lap cho Frame
+		super("Sum of two integer");
+		super.setSize(300,200);
+		super.setLocationRelativeTo(null);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setVisible(true);
+		super.setLayout(new GridLayout(4,1));
+		
+	}
+	
+
+	public static void main(String[] args) {
+		Equation a= new Equation();
+		
+	}
+
+}

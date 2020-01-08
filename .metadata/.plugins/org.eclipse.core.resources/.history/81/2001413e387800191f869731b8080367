@@ -1,0 +1,18 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public abstract class QLTienB extends QLhanghoa{
+	public QLTienB(String maSP,String tenSP, int soLuong,double donGia, QLDate ngayN,QLDate ngayX,QLDate hanDung) {
+		super();
+	
+}
+	@Override
+	public double slove() {
+		double t=0;
+		t=(getSoLuong() * getDonGia());
+		return t;
+	}
+	public static void main(String[] args) {
+	}
+}

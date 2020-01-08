@@ -1,0 +1,44 @@
+package tree;
+
+public class Tree <E>{
+	private class Node<T>{
+		private E info;
+		private Node<T> left, right;
+		public Node( E info) {
+			this.info=info;
+			this.left=this.right=null;
+		}
+		public Node(E info,Node<T> l,Node<T>r) {
+			this.info=info;
+			this.left=l ;
+			this.right=r;
+		}
+	}
+	private Node<E> root;
+	public Tree() {
+		Node r4=new Node(7);
+		Node r2=new Node(4);
+		Node r7=new Node(2);
+		Node r8 =new Node(5);
+		Node r5 =new Node(8);
+		Node r6= new Node(10);
+		Node r3 = new Node(1);
+		root=new Node(3,r2,r3);
+	}
+	private void inOrder(Node r) {
+		if(r!=null) {
+			System.out.println(r.info+" ");
+			inOrder(r.left);
+			inOrder(r.right);
+		}
+	}
+	public void inOder() {
+		inOrder(root);
+	}
+	public static void main(String[] args) {
+		Tree<Integer> t = new Tree<Integer>();
+		t.inOder();
+
+	}
+
+}

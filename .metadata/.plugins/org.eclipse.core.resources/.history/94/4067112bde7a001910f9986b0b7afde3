@@ -1,0 +1,8 @@
+package quan_li_ban_hang;
+
+public interface SanPham {
+	public  void input();
+	public  void output();
+	public double solve();
+
+}

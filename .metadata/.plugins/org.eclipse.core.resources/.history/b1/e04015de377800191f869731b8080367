@@ -1,0 +1,17 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class QLTienM extends QLhanghoa{
+	
+	}
+	@Override
+	public double slove() {
+		double t=0;
+		t= (getDongiaM() * getSoluongM())-(getRate() * (getSoluongM() * getDongiaM()));
+		return t;
+	}
+	public static void main(String[] args) {
+	}
+
+}

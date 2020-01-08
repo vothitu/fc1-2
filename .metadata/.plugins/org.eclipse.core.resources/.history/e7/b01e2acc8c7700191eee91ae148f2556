@@ -1,0 +1,47 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class QLTienB extends QLhanghoa{
+	private double  soluongB, dongiaB;
+	public double getSoluongB() {
+		return soluongB;
+	}
+	public void setSoluongB(double soluongB) {
+		this.soluongB = soluongB;
+	}
+	public double getDongiaB() {
+		return dongiaB;
+	}
+	public void setDongiaB(double dongiaB) {
+		this.dongiaB = dongiaB;
+	}
+	@Override
+	public void input() {
+		super.input();
+		Scanner hieu=new Scanner(System.in);
+		System.out.println("enter so luong:");
+		setSoluongB(hieu.nextDouble());
+		System.out.println("enter don gia : ");
+		setDongiaB(hieu.nextDouble());
+		
+	}
+	@Override
+	public void output() {
+		super.output();
+		System.out.println("so luong :" + getSoluongB());
+		System.out.println("don gia : "+ getDongiaB());
+		System.out.println("tien ban la: "+slove());
+	}
+	@Override
+	public double slove() {
+		double t=0;
+		t=(getSoluongB() * getDongiaB());
+		return t;
+	}
+	public static void main(String[] args) {
+		QLTienB j=new QLTienB();
+		j.input();
+		j.output();
+	}
+}

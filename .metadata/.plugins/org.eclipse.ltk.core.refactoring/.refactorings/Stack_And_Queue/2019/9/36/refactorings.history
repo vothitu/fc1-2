@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Stack_And_Queue/src/stack/MyStackArrayList.java&apos; to &apos;PalindromeFinder.java&apos;" description="Rename resource &apos;MyStackArrayList.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/stack/MyStackArrayList.java" name="PalindromeFinder.java" stamp="1567780505833" updateReferences="true"/>
+</session>

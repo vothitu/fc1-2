@@ -1,0 +1,241 @@
+package quan_li_ban_hang;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.KeyListener;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+
+import doan.Student;
+
+public class GuiQuanLi extends JFrame implements ActionListener, ItemListener 
+{
+	private ArrayList<Phieu> list;
+    DefaultTableModel model;
+
+	int h=0;
+	private JLabel lbMa,lbTen,lbTenNv,lbNhaCC,lbSoLuong,lbDonGia,lbNgayMua,lbNgayBan,lbHanDung,lbTien,lbTieuDe;
+	private JTextField txtMa,txtTen,txtTenNv,txtNhaCC,txtSoLuong,txtDonGia,txtNgayMua,txtNgayBan,txtHanDung,txtTien;
+	private JButton btnSort,btnSearch,btnAdd,btnDelete,btnFix,btnTien;
+	private JTable table;
+	private JPanel pMa,pTen,pTenNv,pNhaCC,pSoLuong,pDonGia,pNgayMua,pNgayBan,pHanDung,pTien,pBtn;
+	private JRadioButton chonB, chonM;
+	JTable jt;
+//	private final String[] titles = new String[] { "MaSp", "TenSP", " TenNV","NhaCC","So Luong", "Don Gia", "Ngay Nhap","Ngay Xuat","Han Dung","Sum" };
+	public GuiQuanLi() {
+		//1.Thiet Lap cho Frame
+		super("Team fun");
+		super.setSize(800,600);
+		super.setLocationRelativeTo(null);
+		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		super.setLayout(new GridLayout(19,1));
+		
+		lbTieuDe= new JLabel();
+		lbTieuDe.setText("QUAN LI CUA HANG TAP HOA ");
+		lbTieuDe.setForeground(Color.GREEN);
+		lbTieuDe.setFont(new Font("",Font.BOLD,15));
+		this.getContentPane().add(lbTieuDe);
+		
+		
+		String[] columns= new String[]{"MaSp", "TenSP", " TenNV","NhaCC","So Luong", "Don Gia", "Ngay Nhap","Ngay Xuat","Han Dung","Sum" };
+		Object[][ ]objcets = new Object[][] {
+			{1,"keo","gfr","gfd",3,5400,2/5/2019,2/6/200,2/4/2020,4500},
+		};
+		//2.tao cac panels components
+		pMa = new JPanel();
+		lbMa= new JLabel("Enter Ma san pham");
+		txtMa= new JTextField(15);
+		pMa = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pMa.add(lbMa);
+		pMa.add(txtMa);
+		
+		//
+		pTen = new JPanel();
+		lbTen= new JLabel("Enter Ten sp");
+		txtTen= new JTextField(15);
+		pTen = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pTen.add(lbTen);
+		pTen.add(txtTen);
+		
+		pTenNv = new JPanel();
+		lbTenNv= new JLabel("Enter Ten Nhan Vien");
+		txtTenNv= new JTextField(15);
+		pTenNv = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pTenNv.add(lbTenNv);
+		pTenNv.add(txtTenNv);
+		
+		pNhaCC = new JPanel();
+		lbNhaCC= new JLabel("Enter Ten nhaCC");
+		txtNhaCC= new JTextField(15);
+		pNhaCC = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pNhaCC.add(lbNhaCC);
+		pNhaCC.add(txtNhaCC);
+		
+		pSoLuong = new JPanel();
+		lbSoLuong= new JLabel("Enter So Luong");
+		txtSoLuong= new JTextField(15);
+		pSoLuong = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pSoLuong.add(lbSoLuong);
+		pSoLuong.add(txtSoLuong);
+		
+		pDonGia = new JPanel();
+		lbDonGia= new JLabel("Enter Don Gia");
+		txtDonGia= new JTextField(15);
+		pDonGia= new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pDonGia.add(lbDonGia);
+		pDonGia.add(txtDonGia);
+		
+		pNgayMua = new JPanel();
+		lbNgayMua= new JLabel("Enter Ngay Nhap");
+		txtNgayMua= new JTextField(15);
+		pNgayMua = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pNgayMua.add(lbNgayMua);
+		pNgayMua.add(txtNgayMua);
+		
+		pNgayBan = new JPanel();
+		lbNgayBan= new JLabel("Enter Ngay Xuat");
+		txtNgayBan= new JTextField(15);
+		pNgayBan = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pNgayBan.add(lbNgayBan);
+		pNgayBan.add(txtNgayBan);
+		
+		pHanDung = new JPanel();
+		lbHanDung= new JLabel("Enter Han Dung");
+		txtHanDung= new JTextField(15);
+		pHanDung = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pHanDung.add(lbHanDung);
+		pHanDung.add(txtHanDung);
+		
+		pTien = new JPanel();
+		lbTien= new JLabel("Tong Tien");
+		txtTien= new JTextField(15);
+		pTien = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		pTien.add(lbTien);
+		pTien.add(txtTien);
+		
+		pBtn=new JPanel();
+		chonM=new JRadioButton("Mua Hang");
+		chonB=new JRadioButton("Ban Hang");
+		ButtonGroup h=new ButtonGroup();
+		h.add(chonM);
+		h.add(chonB);
+	
+		//btnSort,btnSearch,btnMore,btnDelete,btnFix,btnTien,btnSum;
+		btnAdd=new JButton("Add");
+		btnSort=new JButton("Sort");
+		btnSearch=new JButton("Search");
+		btnDelete=new JButton("Delete");
+		btnFix=new JButton("Fix");
+		btnTien=new JButton("Tien");
+		
+		pBtn.add(btnAdd);
+		pBtn.add(btnSort);
+		pBtn.add(btnSearch);
+		pBtn.add(btnDelete);
+		pBtn.add(btnFix);
+		pBtn.add(btnTien);
+		
+		//
+		super.add(chonM);
+		super.add(chonB);				
+		super.add(pMa);
+		super.add(pTen);
+		super.add(pTenNv);
+		super.add(pNhaCC);
+		super.add(pSoLuong);
+		super.add(pDonGia);
+		super.add(pNgayMua);
+		super.add(pNgayBan);
+		super.add(pHanDung);
+		super.add(pTien);
+		super.add(pBtn);
+		
+		JTable table = new JTable(objcets, columns);
+		this.add(new JScrollPane(table));
+
+		// dang ki 
+		
+		btnAdd.addActionListener(this);
+		btnSort.addActionListener(this);
+		btnDelete.addActionListener(this);
+		btnFix.addActionListener(this);
+		btnSearch.addActionListener(this);
+		btnTien.addActionListener(this);	
+		chonM.addItemListener(this);
+		chonB.addItemListener(this);
+		
+		super.setVisible(true);
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	 if (e.getSource() == btnDelete) {
+		chonM.setIcon(null);
+		chonB.setIcon(null);
+		txtMa.setText("");
+		txtTen.setText("");
+		txtDonGia.setText("");
+		txtSoLuong.setText("");
+		txtNgayMua.setText("");
+		txtNgayBan.setText("");
+		txtHanDung.setText("");
+		txtTien.setText("");
+	}
+	}
+	
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+	
+		if(e.getItem()== chonM )
+		{
+			h=1;
+			txtMa.setEditable(true);
+			txtDonGia.setEditable(true);
+			txtNgayMua.setEditable(false);
+			txtNgayBan.setEditable(true);
+			txtSoLuong.setEditable(true);
+			txtTen.setEditable(true);
+			txtTien.setEditable(true);
+			txtHanDung.setEditable(false);
+		}
+		if(e.getItem()==chonB) {
+				h=2;	
+				txtMa.setEditable(true);
+				txtDonGia.setEditable(true);
+				txtNgayMua.setEditable(true);
+				txtNgayBan.setEditable(false);
+				txtSoLuong.setEditable(true);
+				txtTen.setEditable(true);
+				txtTien.setEditable(true);
+				txtHanDung.setEditable(true);
+				
+			}
+			
+	}
+	public static void main(String[] args) {
+		GuiQuanLi qlg=new GuiQuanLi();
+}
+}

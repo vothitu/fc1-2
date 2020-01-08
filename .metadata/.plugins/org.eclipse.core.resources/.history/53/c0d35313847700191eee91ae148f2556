@@ -1,0 +1,64 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+public abstract class QLhanghoa {
+	private String mahang,tenhang;
+	
+	//(new lai QLNhacc vaf new lai QL nhan vien)
+	protected QLDate date=new QLDate();
+	protected QLNhaCC cc=new QLNhaCC();
+	public String getMahang() {
+		return mahang;
+	}
+	public void setMahang(String mahang) {
+		this.mahang = mahang;
+	}
+	public String getTenhang() {
+		return tenhang;
+	}
+	public void setTenhang(String tenhang) {
+		this.tenhang = tenhang;
+	}
+	public QLDate getDate() {
+		return date;
+	}
+	public void setDate(QLDate date) {
+		this.date = date;
+	}
+	public QLNhaCC getCc() {
+		return cc;
+	}
+	public void setCc(QLNhaCC cc) {
+		this.cc = cc;
+	}
+
+	public QLhanghoa() {
+		this.mahang="";
+		this.tenhang="";
+	}
+	public QLhanghoa(String tenhang,String mahang) {
+		setTenhang(tenhang);
+		setMahang(mahang);
+	}
+	public void input() {
+		Scanner t=new Scanner(System.in);
+		System.out.println("nhap ma hang : ");
+		setMahang(t.nextLine());
+		System.out.println("nhap ten hang : ");
+		setTenhang(t.nextLine());
+		
+		date.input();
+		cc.input();
+	}
+	public void output() {
+		System.out.println( "ma hang : "+ getMahang() + "\nten hang : " + getTenhang()  );
+		date.output();
+		cc.output();
+	}
+	
+	public abstract double slove() ;
+	public static void main(String[] args) {
+
+		
+	}
+}

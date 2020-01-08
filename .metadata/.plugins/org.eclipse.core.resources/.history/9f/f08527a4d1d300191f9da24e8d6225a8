@@ -1,0 +1,80 @@
+package stack;
+
+public class MyStackArrayList <E>{
+	private E[]a;
+	private int top; int size=0;
+	public MyStackArrayList() {
+		top =-1;
+		a=(E[]) new Object[10];
+	}
+	public boolean empty() {
+		if(top==1)
+			return true;
+		else
+			return false;
+	}
+	public E push(E e) {
+		if(top==a.length -1) {
+			System.out.println("stack is full");
+			return null;
+		}
+		else {
+			top++;
+		a[top]=e;
+		}
+		size++;
+		return e;
+	}
+	public E peek() {
+		if(top==-1) {
+			System.out.println("stack is empty");
+		return null;
+		}
+	else
+		return a[top];
+	}
+	public E pop() {
+		if(top==-1) {
+			System.out.println("stack is empty");
+			return null;
+		}
+		else {
+			E tmp=a[top];
+			a[top]= null;
+			top--;
+		size--;
+		return tmp;
+	}
+		
+	}
+	@Override
+	public String toString() {
+		String s=" ";
+		for(int i=0;i<=top;i++)
+			s=s+a[i]+" ";
+		return s;
+	}
+	public int search (E e) {
+		for(int i=top;i>=0;i--) 
+			if(a[i]==e) {
+				return size-i;
+			}
+		return -1;
+	}
+	public static void main(String[] args) {
+		MyStackArrayList <Integer> s= new MyStackArrayList<Integer>();
+		s.push(8);
+		s.push(1);
+		s.push(2);
+		s.push(20);
+		s.push(15);
+		s.push(10);
+		System.out.println(s.toString());
+//		System.out.println(s.empty());
+//		System.out.println(s.peek());
+		System.out.println(s.pop());
+//		System.out.println(s.search(1));
+
+	}
+
+}

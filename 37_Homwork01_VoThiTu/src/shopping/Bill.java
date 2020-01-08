@@ -1,0 +1,79 @@
+package shopping;
+import java.util.Scanner;
+public class Bill{
+	private Item[] list = new Item[100];
+	private int n;
+
+	public void input()
+	{
+		Scanner in = new Scanner(System.in);
+		System.out.print("How many items in this bill: ");
+		//setN(in.nextInt());
+		this.n = in.nextInt();
+		for(int i = 0 ; i < n ; i++)
+		{
+			System.out.print("Item "+(i+1)+" : ");
+			Item tmp = new Item();
+			tmp.input();
+			list[i] = tmp;
+		}
+
+	}
+	public void maxPrice()
+	{
+		int maxPrice = list[0].getItemPrice();
+		int k = 0;
+		for(int i = 1 ; i < n ;i++)
+			if(list[i].getItemPrice() > maxPrice)
+			{
+				maxPrice = list[i].getItemPrice();
+				k = i;
+			}
+		System.out.println("Max Price : "+list[k].getItemName()+" "+list[k].getItemPrice());
+	}
+	public void minPrice()
+	{
+		int minPrice = list[0].getItemPrice();
+		int k = 0;
+		for(int i = 1 ; i < n ;i++)
+			if(list[i].getItemPrice() < minPrice)
+			{
+				minPrice = list[i].getItemPrice();
+				k = i;
+			}
+		System.out.println("Min Price : "+list[k].getItemName()+" "+list[k].getItemPrice());
+	}
+	public int total()
+	{
+		int total = list[0].value();
+		for(int i = 1 ; i < n ; i++)
+			total+=list[i].value();
+		return total;
+	}
+	public int tax()
+	{
+		return (int) (this.total()*0.1);
+	}
+	public int payment()
+	{
+		return this.total()+this.tax();
+	}
+	public void output()
+	{
+		System.out.println("Bill");
+		for(int i = 0 ; i < n ;i++)
+			list[i].output();
+		
+		this.minPrice();
+		this.maxPrice();
+		System.out.println("Total   : "+this.total());
+		System.out.println("Tax     : "+this.total()+" x 10% = "+this.tax());
+		System.out.println("Payment : "+(this.total()+this.tax()));
+	}
+	public static void main(String[] args)
+	{
+		Bill list = new Bill();
+		list.input();
+		list.output();
+	}
+}

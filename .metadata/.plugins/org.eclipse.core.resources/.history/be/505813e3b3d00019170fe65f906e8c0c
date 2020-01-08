@@ -1,0 +1,31 @@
+package stack;
+
+public class MyStackArrayList {
+	private String inputString;
+	private Stack<character> charStack = new Stack<Character>()
+			
+	public PalindromeFinder(String str) {
+		inputString = str;
+		fillStack();
+	}
+	private void fillStack() {
+		for(int i=0;i<inputString.length();i++)
+			charStack.push(inputString.charAt(i));
+	}
+	private String buildingResever() {
+		String result = new String();
+		while(!charStack.empty()) {
+			result = result + charStack.pop();
+		}
+		return result.toString();
+	}
+	public boolean isPalindromeFinde() {
+		retrun inputString.equalsIgnoreCase(buildReserve())
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

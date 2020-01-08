@@ -1,0 +1,118 @@
+package fraction;
+
+import java.util.Scanner;
+
+public class Fraction {
+	//khai bao thuoc tinh
+	private int numerator, denominator;
+	public int getNumerator() {
+		return numerator;
+	}
+	public int getDenominator() {
+		return denominator;
+	}
+	public void setNumerator(int n) {
+		numerator=n;
+	}
+	public void setDenominator(int d) {
+		if(d==0) denominator=1;
+		else
+			denominator=d;
+	}
+	// ham khoi tao khong doi so
+	public    Fraction(){
+		denominator=1;
+		
+	}
+	//ham khoi tao co doi so
+	public   Fraction(int n, int d) {
+		setNumerator(n);
+		setDenominator(d);
+	}
+	public void input () {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter numerator : ");
+		int n=input.nextInt();
+		setNumerator(n);
+		int d;
+		do
+		{
+			System.out.println("Enter denominator: ");
+			d = input.nextInt();
+		}   while(d==0);
+		setDenominator(d);
+	}
+	public void output() {
+		System.out.println(numerator+"/"+ denominator);
+	}
+	  public int timUSCLN(int a, int b) {
+	        while (a != b) {
+	            if (a > b) {
+	                a -= b;
+	            } else {
+	                b -= a;
+	            }
+	        }
+	        return a;
+	    }
+	     
+	    public void toiGianPhanSo() {
+	        int i = timUSCLN(getNumerator(), getDenominator());
+	        setNumerator(getNumerator() / i);
+	        setDenominator(getDenominator() / i);
+	    }
+	public Fraction plus(Fraction a1, Fraction a2)
+	{
+		Fraction a3 = new Fraction();
+		a3.setNumerator(a1.getDenominator()*a2.getNumerator()+ a1.getNumerator()*a2.getDenominator());
+		a3.setDenominator(a1.getDenominator()*a2.getDenominator());
+		a3.toiGianPhanSo();
+		return a3;
+	}
+	public Fraction Subtraction(Fraction a1, Fraction a2)
+	{
+		Fraction a4 = new Fraction();
+		a4.setNumerator(a1.getNumerator()*a2.getDenominator() - a1.getDenominator()*a2.getNumerator());
+		a4.setDenominator(a1.getDenominator()*a2.getDenominator());
+		a4.toiGianPhanSo();
+		return a4;
+	}
+	public Fraction multiplication(Fraction a1, Fraction a2)
+	{
+		Fraction a5 = new Fraction();
+		a5.setNumerator(a1.getNumerator()*a2.getNumerator());
+		a5.setDenominator(a1.getDenominator()*a2.getDenominator());
+		a5.toiGianPhanSo();
+		return a5;
+	}
+	public Fraction division(Fraction a1, Fraction a2)
+	{
+		Fraction a6= new Fraction();
+		a6.setNumerator(a1.getNumerator()*a2.getDenominator());
+		a6.setDenominator(a1.getDenominator()*a2.getNumerator());
+		a6.toiGianPhanSo();
+		return a6;
+	}
+	
+	public static void main(String[] args) {
+		Fraction a1 = new Fraction();
+		a1.input();
+		a1.output();
+		
+		Fraction a2 = new Fraction(3,4);
+		a2.output();
+		
+		Fraction a3 = a1.plus(a1,a2);
+		a3.output();
+		
+		Fraction a4 = a1.Subtraction(a1,a2);
+		a4.output();
+		
+		Fraction a5 = a1.multiplication(a1,a2);
+		a5.output();
+		
+		Fraction a6 = a1.division(a1, a2);
+		a6.output();
+	}
+
+}

@@ -1,0 +1,37 @@
+package stack;
+
+import java.util.Stack;
+
+public class PalindromeFinder {
+	private String inputString;
+	private Stack<Character> charStack = new Stack<Character>();
+			
+	public PalindromeFinder(String str) {
+		inputString = str;
+		fillStack();
+	}
+	private void fillStack() {
+		for(int i=0;i<inputString.length();i++)
+			charStack.push(inputString.charAt(i));
+	}
+	private String buildReserve() {
+		String result = new String();
+		while(!charStack.empty()) {
+			result = result + charStack.pop();
+		}
+		return result.toString();
+	}
+	public boolean isPalindromeFinde() {
+		return inputString.equalsIgnoreCase(buildReserve());
+	}
+
+	public static void main(String[] args) {
+		PalindromeFinder a=new PalindromeFinder(null);
+		a.fillStack();
+		a.isPalindromeFinde();
+		a.buildReserve();
+		
+
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Tree/src/tree/avl.java&apos; to &apos;canbang.java&apos;" description="Rename resource &apos;avl.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/tree/avl.java" name="canbang.java" stamp="1574734073624" updateReferences="true"/>
+</session>

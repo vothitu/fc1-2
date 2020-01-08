@@ -1,0 +1,58 @@
+package quan_li_ban_hang;
+ 
+import java.util.Scanner;
+public abstract class QLhanghoa {
+	private String maSP,tenSP,nhanVien,nhaCC;
+	private QLDate ngayX,ngayN,hanDung;
+	private int soLuong;
+	private double donGia;
+	private QLDate date=new QLDate();
+	public String getMaSP() {
+		return maSP;
+	}
+	public void setMaSP(String maSp) {
+		this.maSP = maSp;
+	}
+	public String getTenSP() {
+		return tenSP;
+	}
+	public void setTenSP(String tenSP) {
+		this.tenSP = tenSP;
+	}
+	public QLDate getDate() {
+		return date;
+	}
+	public void setDate(QLDate date) {
+		this.date = date;
+	}
+
+	public QLhanghoa() {
+		this.maSP="";
+		this.tenSP="";
+	}
+	public QLhanghoa(String tenhang,String mahang) {
+		setTenSP(tenSP);
+		setMaSP(maSP);
+	}
+	public void input() {
+		Scanner t=new Scanner(System.in);
+		System.out.println("nhap ma hang : ");
+		setMaSP(t.nextLine());
+		System.out.println("nhap ten hang : ");
+		setTenSP(t.nextLine());
+		
+		date.input();
+	}
+	public void output() {
+		System.out.println( "ma hang : "+ getMaSP() + "\nten hang : " + getTenSP()  );
+		date.output();
+	}
+	
+	public abstract double slove() ;
+	public static void main(String[] args) {
+		
+				}
+			
+		
+	}
+

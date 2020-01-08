@@ -1,0 +1,10 @@
+package array_of_double;
+
+public class ArrayOfDouble {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

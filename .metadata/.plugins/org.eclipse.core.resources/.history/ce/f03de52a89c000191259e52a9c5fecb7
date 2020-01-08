@@ -1,0 +1,26 @@
+package array_list;
+
+import java.util.ArrayList;
+
+public class Test {
+	private ArrayList<Integer>arr=new ArrayList<Integer>();
+	public void input() {
+		arr.add(3);
+		arr.add(5);
+		arr.add(9);
+		arr.add(10);
+		arr.add(-7);
+	}
+	@Override
+	public String toString() {
+		return arr.toString();
+	}
+	public static void main(String[] args) {
+		Test test= new Test();
+		test.input();
+		System.out.println(test.toString());
+		
+
+	}
+
+}

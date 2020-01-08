@@ -1,0 +1,60 @@
+package queue;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class RadixSort {
+	
+	public RadixSort() {
+		int[] unsorted1 = { 9, 179, 139, 38, 10, 5, 36 };
+		radixSort(unsorted1);
+	}
+	public void radixSort(int[] unsorted) {
+		Queue[] box = new Queue[10];
+		for (int i = 0; i < box.length; i++) {
+			box[i] = new LinkedList<Integer>();
+		}
+
+		System.out.print("Unsorted list:   ");
+		printArray(unsorted);
+		int length = 0;
+		for (int i = 0; i < unsorted.length; i++) {
+			int n = (int) (Math.log10(unsorted[i]) + 1);
+			if (n > length) {
+				length = n;
+			}
+		}
+
+		int m = 10;
+		int n = 1;
+		for (int i = 0; i < length; i++) {
+			for (int y = 0; y < unsorted.length; y++) {
+				int nbr = (unsorted[y] % m) / n;
+				box[nbr].add(unsorted[y]);
+			}
+			int x = 0;
+			for (int j = 0; j < box.length; j++) {
+				while (!box[j].isEmpty()) {
+					unsorted[x] = (int) box[j].remove();
+					x++;
+				}
+			}
+			System.out.print("Partly Sorted " + n + "'s: (");
+			printArray(unsorted);
+			m *= 10;
+			n *= 10;
+		}
+		System.out.print("Sorting complete: ");
+		printArray(unsorted);
+	}
+	private void printArray(int[] arr) {
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + ", ");
+		}
+		System.out.println(")");
+	}
+	public static void main(String[] args) {
+		new RadixSort();
+	}
+}

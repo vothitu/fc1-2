@@ -1,0 +1,62 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class Mua extends MatHang implements SanPham
+{
+	private double rate;
+	private QLDate date=new QLDate();
+	public double getRate() {
+		return rate;
+	}
+	public void setRate(double rate) {
+		if(rate<=0 && rate>1) this.rate=0;
+		else this.rate=rate;
+	}
+	public QLDate getDate() {
+		return date;
+	}
+	public void setDate(QLDate date) {
+		this.date=date;
+	}
+	public Mua() {
+		super();
+	}
+	public Mua(String ma,String ten,String nv,String cc,int sl,double dg,QLDate date,double rate){
+		super(ma,ten,nv,cc,sl,dg);
+		this.date=date;
+		this.rate=rate;
+	}
+	public void input() {
+		Scanner kb=new Scanner(System.in);
+		System.out.println("Enter Ngay Nhap:");
+		date.input();
+		System.out.println("Enter Hang Dung:");
+		date.input();
+		System.out.println("Enter Rate:");
+		this.setRate(kb.nextDouble());
+		super.input();
+		
+	}
+	public void output() {
+		super.output();
+		System.out.println("Rate:"+this.rate);
+		System.out.println("Ngay Nhap:");
+		date.output();
+		System.out.println("Han Dung:");
+		date.output();
+	}
+	@Override
+	public double solve() {
+		return (getSoluong()*getDongia())-(getSoluong()*getDongia()*this.rate);
+	}
+
+	public static void main(String[] args) {
+		Mua m=new Mua();
+		m.input();
+		m.output();
+		System.out.println("Tong tien:"+m.solve());
+
+	}
+
+}

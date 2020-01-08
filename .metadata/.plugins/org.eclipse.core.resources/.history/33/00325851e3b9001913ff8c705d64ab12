@@ -1,0 +1,10 @@
+package array_of_integer;
+
+public class ArrayOfInteger {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

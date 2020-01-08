@@ -1,0 +1,40 @@
+package triangle;
+public class Student 
+{ 
+    private String fName; 
+    private String lName; 
+    private int age; 
+     
+    public Student() 
+    { 
+        fName="No Name"; 
+        lName="No Name"; 
+        age=1; 
+    } 
+    public Student(int age) 
+    { 
+        this.age=age; 
+        fName="No Name"; 
+        lName="No Name"; 
+    } 
+    public Student(String fName, String lName, int age) 
+    { 
+        this.fName=fName; 
+        this.lName=lName; 
+        this.age=age; 
+    } 
+    public String toString() 
+    { 
+        return "Ten: "+this.fName+"\nHo: "+this.lName+"\nTuoi:"+this.age; 
+    } 
+     
+     
+    public static void main(String args[]) 
+    { 
+    	Student p1=new Student(); 
+    	Student p2=new Student(32); 
+    	Student p3=new Student("Hung","Pham Van",17); 
+         
+        System.out.println(p3); 
+    } 
+}

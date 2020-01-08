@@ -1,0 +1,34 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class ArrayOfPhieu {
+
+	private int n;
+	private SanPham []a=new SanPham[100];
+	public int getN() {
+		return this.n;
+	}
+	public void setN(int n) {
+		this.n=n;
+	}
+	
+	public void input() {
+		
+		Scanner h=new Scanner(System.in);
+		System.out.println("Enter so mat hang : ");
+		setN(h.nextInt());
+	}
+	public void output() {
+		for(int i=0;i<getN();i++)
+		{
+			System.out.println("\nLoai hang "+ (i+1) +": ");
+			a[i].output();
+		}
+	}
+	public static void main(String[] args) {
+		ArrayOfPhieu h=new ArrayOfPhieu();
+		h.input();
+		h.output();
+	}
+}

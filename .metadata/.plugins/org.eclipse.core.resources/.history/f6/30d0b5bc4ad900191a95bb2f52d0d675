@@ -1,0 +1,29 @@
+package ex;
+
+import java.util.Stack;
+
+public class Expresstion {
+	private String s;
+	public void input()
+	{
+		java.util.Scanner in = new java.util.Scanner(System.in);
+		System.out.print("Enter string : ");
+		s = in.next();
+		in.nextLine();
+	}
+	public boolean checkBracker()
+	{
+		Stack<String> huy = new Stack<String>();
+		for(int i = 0 ; i <  s.length() ; i++)
+		{
+			if(s.charAt(i) == '(')
+				huy.add(String.valueOf(s.charAt(i)));
+			else if(s.charAt(i) == ')' && huy.empty()) 
+				return false;
+			else huy.pop();
+		}
+		if(huy.empty())
+			return true;
+		return false;
+	}
+}

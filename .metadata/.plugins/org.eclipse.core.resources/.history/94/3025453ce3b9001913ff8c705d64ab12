@@ -1,0 +1,39 @@
+package array_of_integer;
+
+public class TestArrayOfInteger {
+	private int n;
+	private int a;
+	public void ArrayOfInteger() {
+		ArrayOfInteger [] a =new ArrayOfInteger[10];
+		n=0;		
+	}
+	public void ArrayOfInteger(int capacity) {
+		a=capacity;
+		n=0;
+	}
+	public void add(int element) {
+		//case1: array is full case 2: array is not full
+		if(n==a.length)
+		{
+			//new
+			int []b = new int [n*2];
+			//copy old array to new array
+			for (int i=0;i<n;i++)
+				b[i]=a[i];
+			a=b;
+		}
+		a[n]=element;
+		n++;
+	}
+	public void output() {
+		for(int i=0;i<n;i++)
+			System.out.println(a+" ");
+	}
+	public static void main(String[] args) {
+		ArrayOfInteger a= new ArrayOfInteger();
+		a.add(2);
+		a.output();
+
+	}
+
+}

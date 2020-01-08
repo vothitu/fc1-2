@@ -1,0 +1,27 @@
+package sum;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class SumGui extends JFrame{
+	private JLabel lbA,lbB,lbResult;
+	private JTextField txtA,txtB,txtResult;
+	private JButton btnSum,btnReset,btnExit;
+	
+	public SumGui() {
+		// thiet lap cho Frame
+		super("Sum of two integer");
+		super.setSize(300,400);
+		super.setLocationRelativeTo(null);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setVisible(true);
+	}
+	
+
+	public static void main(String[] args) {
+		SumGui tu = new SumGui();
+	}
+
+}

@@ -1,0 +1,76 @@
+package queue;
+
+public class QueueArray <E>{
+	private E[] a;
+	private int head, tail, size;
+	public QueueArray() {
+		a = (E[]) new Object[15];
+		head = -1;
+		tail = -1;
+		size = 0;
+	}
+	public boolean isEmpty() {
+		if(head==-1&&tail==-1) 
+			return true;
+		else
+			return false;
+	}
+	public boolean add(E e) {
+		if (size >= a.length) {
+			System.out.println("Queue is full");
+				System.exit(0);	
+	}
+			a[tail++] = e;
+			tail = tail % a.length;
+			size++;
+			return true;
+		}
+	public boolean offer(E e) {
+		if (size >= a.length)
+			return false;
+		a[tail++] = e;
+		tail = tail % a.length;
+		size++;
+		return true;
+	}
+	public E remove() {
+		if (size <= 0) {
+			System.out.println("Queue is empty");
+				System.exit(0);
+			}
+		E temp = a[head++];
+		head = head % a.length;
+		size--;
+		return temp;
+	}
+	public E poll() {
+		if (size <= 0)
+			return null;
+		E temp = a[head++];
+		head = head % a.length;
+		size--;
+		return temp;
+	}
+
+	public E element(){
+		if (size <= 0){
+			System.out.println("Queue is empty");
+			System.exit(0);
+		}
+		return a[head];
+	}
+	public E peek() {
+		if (size <= 0)
+			return null;
+		return a[head];
+	}
+	
+	public boolean isFull() {
+		return (size >= a.length);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

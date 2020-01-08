@@ -1,0 +1,21 @@
+package linear_square_equation;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Equation extends JFrame{
+	private JLabel lbA,lbB,lC,lbResult;
+	private JTextField txtA,txtB,txtC,txtResult;
+	private JButton btnSum,btnReset,btnExit;
+	private JPanel pA,pB,pResult,pBtn;
+	
+
+	public static void main(String[] args) {
+		Equation a= new Equation();
+		
+	}
+
+}

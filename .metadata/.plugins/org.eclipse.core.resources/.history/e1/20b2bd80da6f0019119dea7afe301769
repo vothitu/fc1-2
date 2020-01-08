@@ -1,0 +1,17 @@
+package file;
+
+import java.io.File;
+import java.util.Scanner;
+
+public class ReadFile {
+	Scanner kb= new Scanner(new File("k24cmutpm8.txt"));
+	while(kb.hasNext()==true) {
+		System.out.println(kb.nextLine());
+	}
+	public static void main(String[] args) {
+		ReadFile.read();
+
+	}
+	
+
+}

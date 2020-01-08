@@ -1,0 +1,89 @@
+package complex;
+
+import java.util.Scanner;
+
+public class Complex {
+	private int real, virtual;
+	public int getReal() {
+		return this.real;
+	}
+	public int getVirtual() {
+		return this.virtual;
+	}
+	public void setReal(int r) {
+		this.real=r;
+	}
+	public void setVirtual(int v) {
+		this.virtual=v;
+	}
+	public Complex() {
+		
+	}
+	public Complex(int r,int v) {
+		setReal(r);
+		setVirtual(v);
+	}
+		
+	public void input(){
+		Scanner input = new Scanner(System.in);
+//		System.out.println("Enter real : ");
+//		int r=input.nextInt();
+//		setReal(r);
+	
+	
+//		System.out.println("Enter virtual : ");
+//		int v=input.nextInt();
+//		setVirtual(v);
+	}
+	public void output() {
+		//	System.out.println(real+ "/"+virtual+ "i");
+		
+	}
+	public Complex plus(Complex b){
+		Complex c = new Complex();
+	    c.real=this.real+b.real;
+	    c.virtual=this.virtual+b.virtual;
+	    return c;
+	}
+	public Complex tru(Complex b){
+	    Complex d= new Complex();
+	    d.real=this.real-b.real;
+	    d.virtual=this.virtual-b.virtual;
+	    return d;			
+	}
+	public Complex nhan(Complex b){
+	    Complex e= new Complex();
+	    e.real=this.real*b.real+this.virtual*b.virtual;
+	    e.virtual=this.real*b.virtual+this.virtual*b.real;
+	    return e;
+	}
+	public Complex chia(Complex b){
+		Complex f= new Complex();
+	    f.real=(int) ((this.real*b.real-this.virtual*b.virtual)/(Math.pow(b.real, 2)-Math.pow(b.virtual, 2)));
+	    f.virtual=(int) ((this.virtual*b.real-this.real*b.virtual)/(Math.pow(b.real, 2)-Math.pow(b.virtual, 2)));
+	    return f;
+	}
+	public static void main(String[] args) {
+		Complex a= new Complex();
+		a.input();
+		a.output();
+		
+//		Complex b= new Complex();
+//		b.input();
+//		b.output();
+//		
+//		Complex c = a.plus(b);
+//		c.output();
+//		
+//		Complex d = a.tru(b);
+//		d.output();
+//		
+//		Complex e = a.nhan(b);
+//		e.output();
+//		
+//		Complex f = a.chia(b);
+//		f.output();
+	}
+
+}
+

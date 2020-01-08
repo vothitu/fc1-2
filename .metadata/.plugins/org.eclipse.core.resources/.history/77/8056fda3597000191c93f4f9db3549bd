@@ -1,0 +1,136 @@
+package shape;
+
+import java.util.*;
+import java.io.*;
+public class ArrayOfShape {
+	private Shape[] list = new Shape[100];
+	private int n;
+	public void readFile() throws FileNotFoundException
+	{
+		Scanner in = new Scanner(new File("src/shape/input.txt"));
+		while(in.hasNextLine())
+		{
+			String str = in.next();
+			if(str.compareTo("rectangle") == 0)
+			{
+				Shape s = new Rectangle(in.nextDouble(),in.nextDouble());
+				list[n] = s;
+				n++;
+			}
+			else if(str.compareTo("circle") == 0)
+			{
+				Shape s = new Circle(in.nextDouble());
+				list[n] = s;
+				n++;
+			}
+			else if(str.compareTo("triangle") == 0)
+			{
+				Shape s = new Triangle(in.nextDouble(),in.nextDouble(),in.nextDouble());
+				list[n] = s;
+				n++;
+			}
+			
+		}
+	}
+	public void sortArea()
+	{
+		for(int i = 0 ; i < n ; i++)
+			for(int j = 0 ; j < n - 1 ; j++)
+			{
+				if(list[i].area() > list[j].area())
+				{
+					Shape tmp = list[i];
+					list[i] = list[j];
+					list[j] = tmp;
+				}
+			}
+	}
+	public void write() throws FileNotFoundException
+	{
+		PrintStream p = new PrintStream(new File("src/shape/output.txt"));
+		for(int i = 0 ; i < n ; i++)
+		{
+			if(list[i] instanceof Triangle)
+			{
+				p.append("The area of triangle : "+list[i].area()+"\n");
+			}
+			else if(list[i] instanceof Circle)
+			{
+				p.append("The area of circle : "+list[i].area()+"\n");
+			}
+			else if(list[i] instanceof Rectangle)
+			{
+				p.append("The area of rectangle : "+list[i].area()+"\n");
+			}
+		}
+			
+	}
+	public void input() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter the numbers of shape : ");
+		n = in.nextInt();
+		for (int i = 0; i < n; i++) {
+			System.out.println("Enter the geometry " + (i + 1));
+			System.out.println("1.Circle\n2.Rectangle\n3.Triangle\n4.Square\n5.Cylinder");
+			int choose = in.nextInt();
+			if (choose == 1)
+				list[i] = new Circle();
+			else if (choose == 2)
+				list[i] = new Rectangle();
+			else if (choose == 3)
+				list[i] = new Triangle();
+			else if(choose == 4)
+				list[i] = new Square();
+			else if(choose == 5)
+				list[i] = new Cylinder();
+			list[i].input();
+		}
+	}
+	public void output() {
+		for (int i = 0; i < n; i++) {
+			System.out.println("The geometry " + (i + 1));
+			list[i].output();
+		}
+	}
+	/*public double  areaMax() {
+		double max= a[0].area(); // tinh da hinh
+		for(int i=1;i<n;i++)
+			if(max<a[i].area())// tinh da hinh
+				max=a[i].area();// tinh da hinh
+		return max;
+	}
+	public double  perimerterMin() {
+		double min= a[0].perimeter(); // tinh da hinh
+		for(int i=1;i<n;i++)
+			if(min>a[i].perimeter())// tinh da hinh
+				min=a[i].perimeter();// tinh da hinh
+		return min;
+	}
+	public void count() {
+		int c1=0, c2=0, c3=0, c4=0;
+		for(int i=0;i<n;i++)
+			if(a[i] instanceof Rectangle) c1++;
+			else
+				if(a[i] instanceof Circle) c2++;
+				else
+					if(a[i] instanceof Triangle) c3++;
+					else c4++;
+		
+		System.out.println(c1+"\t"+c2+ "\t"+c3+"\t" +c4);
+	}*/
+	
+
+	public static void main(String[] args) throws FileNotFoundException {
+		ArrayOfShape arr=new ArrayOfShape();
+		arr.readFile();
+		arr.output();
+		arr.sortArea();
+		arr.write();
+//		s.input();
+//		s.output();
+//		s.count();
+		
+		
+
+	}
+}

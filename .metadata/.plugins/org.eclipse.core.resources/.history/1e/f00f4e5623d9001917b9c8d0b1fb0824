@@ -1,0 +1,25 @@
+package stack;
+
+import java.util.Stack;
+
+public class Expresstion {
+	private String OPEN="(((";
+	private String CLOSE=")))";
+	public boolean isBalanced(String e) {
+		Stack<Character> s= new Stack<Character>();
+		boolean balanced;
+		try {
+			balanced=true;
+			int index=0;
+			while(index<e.length()&&balanced) {
+				
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

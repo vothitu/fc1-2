@@ -1,0 +1,41 @@
+package array_list;
+
+import java.util.ArrayList;
+
+public class Test {
+	private ArrayList<Integer>arr=new ArrayList<Integer>();
+	public void input() {
+		arr.add(3);
+		arr.add(5);
+		arr.add(9);
+		arr.add(10);
+		arr.add(7);
+	}
+	@Override
+	public String toString() {
+		return arr.toString();
+	}
+	//tinh tong cac so nguyen trong doi tuong mang MyArrayList
+	public int sum() {
+		int s=0;
+		for(int i=0;i<arr.size();i++)
+			s=s+arr.get(i);
+		return s;
+		
+	}
+	// thiet lap lai ca phan tu o vi tru chan bang 10
+	public void set() {
+		for(int i=0;i<arr.size();i=i+2)	
+		System.out.println(arr.set(i,10));
+	}
+	public static void main(String[] args) {
+		Test test= new Test();
+		test.input();
+		System.out.println(test.toString());
+		System.out.println(test.sum());
+		test.set();
+		
+
+	}
+
+}

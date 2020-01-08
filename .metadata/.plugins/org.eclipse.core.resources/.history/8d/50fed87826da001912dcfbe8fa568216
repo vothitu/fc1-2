@@ -1,0 +1,24 @@
+package queue;
+
+import java.util.Scanner;
+
+public class Sort {
+	private int n;
+	public void setN(int n) {
+		this.n=n;
+	}
+	public void input() {
+		Scanner kb= new Scanner(System.in);
+		System.out.print("nhap n: ");
+		this.setN(kb.nextInt());
+		System.out.println();
+	}
+
+	public static void main(String[] args) {
+		Sort s= new Sort();
+		s.input();
+		System.out.println();
+
+	}
+
+}

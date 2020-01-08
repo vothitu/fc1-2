@@ -1,0 +1,364 @@
+package tree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+public class Tree <E>{
+	private class Node<T>{
+		private E info;
+		int level=1;
+		
+		private Node<T> left, right;
+		public Node( E info) {
+			this.info=info;
+			this.left=this.right=null;
+			
+		}
+		public Node(E info,Node<T> l,Node<T> r) {
+			this.info=info;
+			this.left=l ;
+			this.right=r;
+		}
+	}
+	private Node<E> root;
+	public Tree() {
+		Node r1= new Node(4,new Node(7),null);
+		Node r2= new Node(1,new Node(8),new Node(10,new Node(2),new Node(5)));
+		root=new Node(3,r1,r2);
+	}
+	private void inOrder(Node r) {
+		if(r!=null) {
+			System.out.println(r.info+" ");
+			inOrder(r.left);
+			inOrder(r.right);
+		}
+	}
+	public void inOder() {
+		inOrder(root);
+	}
+	private void midOrder(Node r) {
+		if(r!=null) {
+			midOrder(r.left);
+			System.out.println(r.info);
+			midOrder(r.right);
+		}
+	}
+	public void midOrder() {
+		midOrder(root);
+	}
+	private void postOrder(Node r) {
+		if(r!=null) {
+			postOrder(r.left);
+			postOrder(r.right);
+			System.out.println(r.info);
+		}
+	}
+	public void postOrder() {
+		postOrder(root);
+	}
+	private int sum(Node r) {
+		if(r==null) return 0;
+		else
+			return (int) r.info +sum( r.left) + sum(r.right);
+	}
+	public void sum() {
+		System.out.println("sum= " + sum(root));
+	}
+	private int sumc(Node r) {
+		if(r==null) return 0;
+		else {
+			if((int)r.info %2==0) 
+				return (int)r.info+sumc(r.left)+sumc(r.right);
+			else
+				return sumc(r.left)+ sumc(r.right);
+		}
+	}
+	public void sumc() {
+		System.out.println("sumChan= "+ sumc(root));
+	}
+	private int soNode(Node r) {
+		if(r==null)
+			return 0;
+		else
+			return 1+ soNode(r.left)+soNode(r.right);
+	}
+	public int soNode() {
+		return soNode(root);
+	}
+	private int soLa(Node r) {
+		if(r==null)
+			return 0;
+		else
+			if(r.left==null && r.right==null)
+			return 1;
+			else
+				return soLa(r.left)+soLa(r.right);
+	}
+	public int soLa() {
+		return soLa(root);
+	}
+	private int cout1(Node r) {
+		if(r==null)
+			return 0;
+		else
+			if(r.right==null&&r.left!=null||r.right!=null&&r.left==null)
+				return 1+cout1(r.left)+cout1(r.right);
+			return cout1(r.left)+cout1(r.right);
+	}
+	public int cout1() {
+		return cout1(root);
+	}
+	private int cout2(Node r) {
+		if(r==null)
+			return 0;
+		else
+			if(r.right==null&&r.left==null)
+				return cout2(r.left)+cout2(r.right);
+			return 1+cout2(r.left)+cout2(r.right);
+	}
+	public int cout2() {
+		return cout2(root);
+	}
+	private int demLe(Node r) {
+		if(r==null)
+			return 0;
+		else
+			if((int)r.info%2!=0)
+				return 1+ demLe(r.left)+demLe(r.right);
+		return demLe(r.left)+demLe(r.right);
+	}
+	public int demLe() {
+		return demLe(root);
+	}
+	private boolean search(int x,Node node)
+	{
+		if(node == null)
+			return false;
+		if((int)node.info == x)
+			return true;
+		else return search(x,node.left) || search(x,node.right);
+	}
+	public boolean searh(int x)
+	{
+		return search(x,root.left) || search(x,root.right);
+	}
+	private int height(Node r) {
+		if(r==null)
+			return 0;
+		else
+			return 1+Math.max(height(r.left),height(r.right));
+	
+	}
+	public int height() {
+		return height(root);
+	}
+	public void chieurong() {
+		if(root!=null) {
+			Queue <Node>q=new LinkedList<Node>();
+			q.add(root);
+			while(!q.isEmpty()) {
+				Node p=q.remove();
+				System.out.println(p.info);
+				if(p.left!=null)
+					q.add(p.left);
+				if(p.right!=null)
+					q.add(p.right);
+			}
+		}
+	}
+	public void muc(int x) {
+		if(root!=null) {
+			Queue <Node> q = new LinkedList<Node>();
+			q.add(root);
+			while(!q.isEmpty()) {
+				Node p=q.remove();
+				if((int)p.info==x)
+					System.out.println(p.level);
+				if(p.left!=null)
+				{
+					p.left.level=p.level+1;
+					q.add(p.left);
+				}
+				if(p.right!=null) {
+					p.right.level=p.level+1;
+					q.add(p.right);
+				}
+			}
+		}
+	}
+	public void chieusau() {
+		if(root!=null) {
+			Stack <Node> s = new Stack <Node>();
+			s.push(root);
+			while(!s.isEmpty()) {
+				Node p = s.pop();
+				System.out.println(p.info);
+				if(p.left!=null)
+					s.push(p.left);
+				if(p.right!=null)
+					s.push(p.right);
+			}
+		}
+	}
+	public void timX(int x)
+	{
+		timX(x,root);
+	}
+	//i
+	private void timX(int x,Node r)
+	{
+		if(r != null)
+		{
+			if((int)r.info == x)
+				System.out.println("Level : "+r.level);
+			if(r.left!=null)
+			{
+				r.left.level = r.level+1;
+				timX(x,r.left);
+			}
+			if(r.right!=null)
+			{
+				r.right.level = r.level+1;
+				timX(x,r.right);
+			}
+		}
+	}
+	//j
+	public void kiemTraRoot()
+	{
+		System.out.println("Root la max : "+(max() == (int)root.info));
+	}
+	public int max()
+	{	
+		int max = (int)root.info;
+		if(root!= null)
+		{
+			Queue<Node> huy = new LinkedList<Node>();
+			huy.add(root);
+			while(!huy.isEmpty())
+			{
+				Node p = huy.poll();
+				if((int)p.info>max)
+					max = (int)p.info;
+				if(p.left!=null)
+					huy.add(p.left);
+				if(p.right!=null)
+					huy.add(p.right);
+				
+			}
+		}
+		return max;
+	}
+	//l
+		public void timMax()
+		{
+			if(root!= null)
+			{
+				int max = max();
+				Queue<Node> q = new LinkedList<Node>();
+				q.add(root);
+				while(!q.isEmpty())
+				{
+					Node p = q.poll();
+					if((int)p.info == max)
+						System.out.print("Level : "+p.level);
+					if(p.left != null )
+					{
+						p.left.level = p.level + 1;
+						q.add(p.left);
+					}
+						
+					if(p.right != null )
+					{
+						p.right.level = p.level + 1;
+						q.add(p.right);
+					}
+						
+				}
+			}
+		}
+	public void mucNhieuNodeNhat()
+	{	
+		if(root!= null)
+		{
+			int max = 1,muc = 1;
+			Queue<Node> huy = new LinkedList<Node>();
+			System.out.println("Muc 1 : ");
+			System.out.println(root.info);
+			if(root.left != null)
+			{
+				root.left.level = root.level +1;
+				huy.add(root.left);
+			}
+			if(root.right != null)
+			{
+				root.right.level = root.level +1;
+				huy.add(root.right);
+			}
+			int maxTmp = 0,mucTmp = 0;
+			while(!huy.isEmpty())
+			{
+				Node q = huy.poll();
+				if(q.level != mucTmp)
+				{	
+					if(maxTmp > max)
+					{
+						max = maxTmp;
+						muc = mucTmp;
+					}
+					maxTmp = 1;
+					System.out.println("Muc "+q.level+" : ");
+					System.out.println(q.info);
+					mucTmp = q.level;
+				} else {
+					System.out.println(q.info);
+					maxTmp++;
+				}
+				if(q.left != null)
+				{
+					q.left.level = q.level +1;
+					huy.add(q.left);
+				}
+				if(q.right != null)
+				{
+					q.right.level = q.level +1;
+					huy.add(q.right);
+				}	
+			}
+			System.out.println("Muc co nhieu node nhat "+muc+" voi so node la "+max);
+		}
+		
+	}
+	public static void main(String[] args) {
+		Tree<Integer> t = new Tree<Integer>();
+		t.inOder();
+//		System.out.println();
+//		t.midOrder();
+//		System.out.println();
+//		t.postOrder();
+//		System.out.println();
+//		t.sum();
+		System.out.println();
+		t.sumc();
+		System.out.println(t.soNode());
+		System.out.println(t.soLa());
+		System.out.println(t.cout1());
+		System.out.println(t.cout2());
+		System.out.println("node le:" +t.demLe());
+		System.out.println(t.searh(6));
+		System.out.println("chieu cao:" +t.height());
+		System.out.println("chieu rong");
+		t.chieurong();
+		System.out.println("muc");
+		t.muc(8);
+		System.out.println("chieu sau");
+		t.chieusau();
+		System.out.println("tim x va cho biet muc:");
+		t.timX(4);
+		System.out.println("node goc max:");
+		t.max();
+
+	}
+
+}

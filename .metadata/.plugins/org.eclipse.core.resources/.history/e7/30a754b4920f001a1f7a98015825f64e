@@ -1,0 +1,117 @@
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Insert_Sort extends JFrame {
+	private JButton randomBtn;
+	private JButton CreateBtn;
+	private JButton SortBtn;
+	private JLabel List;
+	private JTextField userText;
+	private Col ArrCol[]= new Col [20];
+	private JPanel ArrofCol[];//arr of col
+	private int listOfNumber[],n = 0;// number
+	public Insert_Sort()
+	{
+		super.setLocationRelativeTo(null);
+		super.setBounds(0,0,900,700);
+		super.setTitle("Insert-Sort ");
+		super.setLocationRelativeTo(null);
+		super.getContentPane().setBackground(Color.CYAN);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setLayout(null);
+		randomBtn = new JButton("Random");
+		randomBtn.setBounds(30,50,100,25);
+		randomBtn.setBackground(Color.YELLOW);
+		randomBtn.addActionListener(new randomBtnButton());
+		
+		List = new JLabel("Enter Listnumber");
+        List.setBounds(30,120,100,45);
+        List.setForeground(Color.RED);
+    
+        
+        userText = new JTextField(20);
+        userText.setBounds(150,130,200,25);
+        
+        CreateBtn= new JButton("Create");
+        CreateBtn.setBounds(150,50,100,25);
+        CreateBtn.setBackground(Color.pink);
+        CreateBtn.addActionListener(new createBtnButton());
+        
+        SortBtn= new JButton("Sort");
+        SortBtn.setBounds(270,50,100,25);
+        SortBtn.setBackground(Color.green);
+        
+        
+        super.add(randomBtn);
+        super.add(List);
+        super.add(userText);
+        super.add(CreateBtn);
+        super.add(SortBtn);
+        super.setVisible(true);
+	
+	}
+	public void create() {
+		listOfNumber = new int[100];
+		refreshCol();
+		
+		String list[] = userText.getText().split(",");
+		n = list.length;
+		ArrofCol = new JPanel[n];
+		super.setVisible(false);
+		for(int i = 0 ; i < list.length ; i++) {
+			listOfNumber[i] = Integer.parseInt(list[i]);
+			ArrofCol[i] = new JPanel();
+			ArrofCol[i].setBounds(100+i*20*2,600-(listOfNumber[i]*5+20),20,listOfNumber[i]*5+20);
+			super.add(ArrofCol[i]);
+		}
+		super.setVisible(true);
+	}
+	public void taocot() {
+		for(int i = 0 ; i < n ; i++)
+		{
+			ArrofCol[i] = new JPanel();
+			ArrofCol[i].setBounds(25,40,40,25);
+		}
+	}
+	public void refreshCol() {
+		for(int i = 0 ; i < n ; i++)
+			super.remove(ArrofCol[i]);
+	}
+	private class randomBtnButton implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			Random rand = new Random();
+			String Random="";
+			
+			for(int i=0;i<10;i++)
+			{	
+				Random+=rand.nextInt(50)+",";
+			}
+			userText.setText(Random);
+//			create();
+		}
+	}
+	private class createBtnButton implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{	
+			create();
+		}
+	}
+	
+	public static void main(String arg[])
+	{
+		new Insert_Sort();
+	}
+	
+}

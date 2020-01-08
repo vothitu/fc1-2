@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Vidu/src/vidu/Tu.java&apos; to &apos;JTableDataManageExample.java&apos;" description="Rename resource &apos;Tu.java&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/vidu/Tu.java" name="JTableDataManageExample.java" stamp="1558394275228" updateReferences="true"/>
+</session>

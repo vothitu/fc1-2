@@ -1,0 +1,15 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class QLTienB extends QLhanghoa{
+}
+	@Override
+	public double slove() {
+		double t=0;
+		t=(getSoluongB() * getDongiaB());
+		return t;
+	}
+	public static void main(String[] args) {
+	}
+}

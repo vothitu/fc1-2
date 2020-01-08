@@ -1,0 +1,47 @@
+package sort;
+
+import java.util.ArrayList;
+
+public class binary {
+
+    public static int binarySearch(ArrayList<String> name, int low, int high, String key) {
+
+        if (low <= high) {
+            int mid = (low + high) / 2; //get mid point
+            if (name.get(mid).equals(key)) {
+                return mid;
+            } else if ((key.compareTo(name.get(mid))) < 0) {
+                return binarySearch(name, low, mid - 1, key);
+            } else {
+                return binarySearch(name, mid + 1, high, key);
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        //get contents from columns:
+        ArrayList<String> st = new ArrayList<String>();
+        Object jTable1;
+		int rowCount = jTable1.getRowCount();
+        String fPrice;
+        int rowIndex = 0; //start from row 0
+        int colIndex = 4; //Price is at column 4
+        boolean emptyFlag = false;
+        do {
+            fPrice = (String) jTable1.getValueAt(rowIndex, 1);
+            if (fPrice != null && fPrice.length() != 0) {
+                st.add(fPrice);
+                rowIndex++;
+            } else {
+                emptyFlag = true;
+            }
+        } while (rowIndex < rowCount && !emptyFlag);
+        Collections.sort(st); //sort the list
+        String key = jTextField4.getText(); //get the search keyword
+        int low = 0;
+        int high = st.size() - 1;
+        int searchResult = BinSearch.binarySearch(st, low, high, key);
+    }
+    

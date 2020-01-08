@@ -1,0 +1,77 @@
+package quan_li_ban_hang;
+
+import java.util.Scanner;
+
+public class Phieu extends MatHang
+{
+	private Date date=new Date();
+	private String loai;
+	private String mua;
+	public String getLoai() {
+		return loai;
+	}
+	public void setLoai(String loai) {
+		this.loai=loai;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date=date;
+	}
+	public Phieu() {
+		super();
+	}
+	public Phieu(String loai,String ma,String ten,String nv,String cc,int sl,double dg,Date date){
+		super(ma,ten,nv,cc,sl,dg);
+		this.date=date;
+		this.loai=loai;
+	}
+	public void input() {
+		Scanner kb=new Scanner(System.in);
+		System.out.println("Enter Loai: ");
+		this.setLoai(kb.nextLine());
+		if(loai.equals(mua)) {
+		super.input();
+		System.out.println("Enter Ngay Nhap:");
+		date.input();
+		System.out.println("Enter Hang Dung:");
+		date.input();
+		}
+		else {
+		super.input();
+		System.out.println("Enter Ngay Xuat:");
+		date.input();
+		}
+		
+		
+		
+	}
+	public void output() {
+		if(loai.equals(mua)) {
+		super.output();
+		System.out.println("Ngay Nhap:");
+		date.output();
+		System.out.println("Han Dung:");
+		date.output();
+		}
+		else
+		super.output();
+		System.out.println("Ngay Xuat:");
+		date.output();
+	}
+	@Override
+	public double solve() {
+		return getSoluong()*getDongia();
+	}
+
+	public static void main(String[] args) {
+		Phieu b=new Phieu();
+		b.input();
+		b.output();
+		b.solve();
+		System.out.println("Tong tien: "+b.solve());
+
+	}
+
+}

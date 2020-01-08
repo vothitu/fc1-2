@@ -1,0 +1,62 @@
+package array_list;
+
+import java.util.ArrayList;
+
+public class Test {
+	private ArrayList<Integer>arr=new ArrayList<Integer>();
+	public void input() {
+		arr.add(3);
+		arr.add(5);
+		arr.add(9);
+		arr.add(10);
+		arr.add(7);
+		arr.add(2);
+	}
+	@Override
+	public String toString() {
+		return arr.toString();
+	}
+	//tinh tong cac so nguyen trong doi tuong mang MyArrayList
+	public int sum() {
+		int s=0;
+		for(int i=0;i<arr.size();i++)
+			s=s+arr.get(i);
+		return s;
+		
+	}
+	// thiet lap lai ca phan tu o vi tru chan bang 10
+	public void set() {
+		for(int i=0;i<arr.size();i=i+2)	
+			arr.set(i,10);
+	}
+	//viet ham kiem tra x cos phai la so nguyen to
+	public boolean isPrime(int x) {
+		if(x<2)
+			return false;
+		for(int i=2;i<Math.sqrt(x);i++)
+			if(x%i==0) return false;
+		return true;
+	}
+	//tinh trung binh cong cac so nguyen to trong doi tuong mang arr
+	public double averagePrime() {
+		double s=0; int d=0;
+		for(int i=0;i<arr.size();i++)
+			if(isPrime(arr.get(i))==true) {
+				s=s+arr.get(i);
+				d++;
+			}
+			return s/d;		
+	}
+	//xoa cac gia tri am trong doi tuong ArrayList
+	public static void main(String[] args) {
+		Test test= new Test();
+		test.input();
+		System.out.println(test.toString());
+		System.out.println(test.sum());
+		test.set();
+		System.out.println(test.averagePrime());
+		
+
+	}
+
+}

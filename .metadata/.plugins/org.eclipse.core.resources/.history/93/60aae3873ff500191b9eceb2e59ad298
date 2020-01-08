@@ -1,0 +1,75 @@
+package tree;
+
+public class Tree <E>{
+	private class Node<T>{
+		private E info;
+		private Node<T> left, right;
+		public Node( E info) {
+			this.info=info;
+			this.left=this.right=null;
+		}
+		public Node(E info,Node<T> l,Node<T>r) {
+			this.info=info;
+			this.left=l ;
+			this.right=r;
+		}
+	}
+	private Node<E> root;
+	public Tree() {
+		Node r3=new Node(2);
+		Node r4=new Node(8);
+		Node r1=new Node(7,r3,r4);
+		Node r2 =new Node(4,null,new Node(9,new Node(10),null));
+		root=new Node(1,r1,r2);
+	}
+	private void inOrder(Node r) {
+		if(r!=null) {
+			System.out.println(r.info+" ");
+			inOrder(r.left);
+			inOrder(r.right);
+		}
+	}
+	public void inOder() {
+		inOrder(root);
+	}
+	private void midOrder(Node r) {
+		if(r!=null) {
+			midOrder(r.left);
+			System.out.println(r.info);
+			midOrder(r.right);
+		}
+	}
+	public void midOrder() {
+		midOrder(root);
+	}
+	private void postOrder(Node r) {
+		if(r!=null) {
+			postOrder(r.left);
+			postOrder(r.right);
+			System.out.println(r.info);
+		}
+	}
+	public void postOrder() {
+		postOrder(root);
+	}
+	private int sum(Node r) {
+		if(r==null) return 0;
+		else
+			return (int) r.info +sum( r.left) + sum(r.right);
+	}
+	public void sum() {
+		System.out.println("sum= " + sum(root));
+	}
+	public static void main(String[] args) {
+		Tree<Integer> t = new Tree<Integer>();
+		t.inOder();
+		System.out.println();
+		t.midOrder();
+		System.out.println();
+		t.postOrder();
+		System.out.println();
+		t.sum();
+
+	}
+
+}

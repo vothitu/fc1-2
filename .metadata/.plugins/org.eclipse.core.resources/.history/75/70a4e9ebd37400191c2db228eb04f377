@@ -1,0 +1,84 @@
+package linear_square_equation;
+
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Equation extends JFrame{
+	private JLabel lbA,lbB,lbC,lbResult;
+	private JTextField txtA,txtB,txtC,txtResult;
+	private JButton btnSolve,btnReset,btnExit;
+	private JPanel pA,pB,pC,pResult,pBtn;
+	
+	
+	public  Equation() {
+		
+		//1. thiet lap cho Frame
+		super("Equation");
+		super.setSize(300,400);
+		super.setLocationRelativeTo(null);
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		super.setVisible(true);
+		super.setLayout(new GridLayout(4,1));
+		
+		//2.tao cac panels components
+		pA = new JPanel();
+		//pA.setLayout(new FlowLayout()); //default layout cua JPanel la FlowLayout
+		lbA= new JLabel("Enter a");
+		txtA= new JTextField(10);
+		pA.add(lbA);
+		pA.add(txtA);
+				
+		pB = new JPanel();
+		lbB= new JLabel("Enter b");
+		txtB= new JTextField(10);
+		pB.add(lbB);
+		pB.add(txtB);
+		
+		pC= new JPanel();
+		lbC= new JLabel("Enter c");
+		txtC= new JTextField(10);
+		pC.add(lbC);
+		pC.add(txtC);
+				
+		pResult = new JPanel();
+		lbResult= new JLabel("result");
+		txtResult= new JTextField(15);
+		txtResult.setEnabled(false);
+		pResult.add(lbResult);
+		pResult.add(txtResult);
+		
+		
+				
+		pBtn= new JPanel();
+		btnSolve= new JButton("Solve");
+		btnReset= new JButton("Reset");
+		btnExit= new JButton("Exit");
+		pBtn.add(btnSolve);
+		pBtn.add(btnReset);
+		pBtn.add(btnExit);
+				
+		//3.them cac components vao Frame
+		super.add(pA);
+		super.add(pB);
+		super.add(pC);
+		super.add(pResult);
+		super.add(pBtn);
+		
+		
+		super.validate();
+		
+	}
+	
+
+	public static void main(String[] args) {
+		Equation a= new Equation();
+		
+	}
+
+}

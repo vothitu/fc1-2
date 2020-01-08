@@ -1,0 +1,20 @@
+package khudequy;
+
+import java.util.Stack;
+
+public class factorial{
+	public static long factorial(int n)
+	{
+		long s = 1;
+		Stack<Integer> huy = new Stack<Integer>();
+		while(n!=0)
+			huy.push(n--);
+		while(!huy.isEmpty())
+			s*=huy.pop();
+		return s;
+	}
+	public static void main(String[] args) {
+		factorial a= new factorial();
+		System.out.println(a.factorial(4));
+	}
+}
